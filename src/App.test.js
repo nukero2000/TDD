@@ -48,3 +48,9 @@ it('Grow branch from leaf',()=>{
     expect(leaf2.ParentNode.ID).toBe(1);
     expect(leaf1.branches).toContainEqual(leaf2);
 })
+// TEST 7
+it('Grow branches from tree leaf', () => {
+    const tree= new Tree();
+    tree.growBranches(tree.getRoot(),3);
+    expect(tree.countLeafs()).toBe(4);
+})
