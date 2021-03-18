@@ -54,3 +54,12 @@ it('Grow branches from tree leaf', () => {
     tree.growBranches(tree.getRoot(),3);
     expect(tree.countLeafs()).toBe(4);
 })
+// TEST 8
+fit('Grow a custom binary tree on 3 level', () => {
+    const tree = new Tree();
+    tree.growBranches(tree.getRoot(2),2)
+    for(branch of tree.getRoot().branches){
+        tree.growBranches(branch,2)
+    }
+    expect(tree.countLeafs()).toBe(7);
+})
