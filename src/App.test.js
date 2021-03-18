@@ -36,4 +36,15 @@ it('Add root leaf to Tree', ()=>{
     }
     expect(tree.getRoot()).toMatchObject(leafData)
 })
+//TEST 6
+fit('Grow branch from leaf',()=>{
+    const leaf1Data = {
+        ID:1,
+        ParentNode:null
+    }
+    const leaf1 = new Leaf(leaf1Data);
+    const leaf2 = leaf1.growBranch(2)
 
+    expect(leaf2.ParentNode.ID).toBe(1);
+    expect(leaf1.branches).toContainEqual(leaf2);
+})
