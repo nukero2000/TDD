@@ -12,3 +12,8 @@ it('Create tree',() => {
     const tree= new Tree();
     expect(tree.leafs.length).toBe(0)
 })
+
+fit('Create one leaf ',()=>{
+    const leaf = new Leaf();
+    expect(leaf).toBeDefined();
+})
