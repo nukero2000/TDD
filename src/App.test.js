@@ -18,3 +18,13 @@ it('Create one leaf ',()=>{
     const leaf = new Leaf();
     expect(leaf).toBeDefined();
 })
+
+fit('Create leaf for root node on tree', ()=>{
+    const leafData = {
+        ID:0,
+        ParentNode:null
+    }
+    const leaf = new Leaf({leafData});
+    expect(leaf).toMatchObject(leafData)
+})
+
