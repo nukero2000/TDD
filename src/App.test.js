@@ -55,9 +55,10 @@ it('Grow branches from tree leaf', () => {
     expect(tree.countLeafs()).toBe(4);
 })
 // TEST 8
-fit('Grow a custom binary tree on 3 level', () => {
+it('Grow a custom binary tree on 3 level', () => {
     const tree = new Tree();
-    tree.growBranches(tree.getRoot(2),2)
+    tree.growBranches(tree.getRoot(),2)
+    let branch;
     for(branch of tree.getRoot().branches){
         tree.growBranches(branch,2)
     }

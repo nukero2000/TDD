@@ -5,7 +5,7 @@ class Leaf {
            const  {ID,ParentNode}=leafData;
             this.ID=ID;
             this.ParentNode=ParentNode;
-            this.branches = [];
+            this._branches = [];
         }
     }
     growBranch = (ID) => {
@@ -14,8 +14,15 @@ class Leaf {
             ParentNode:this
         };
         const  newLeaf = new Leaf(newLeafData);
-        this.branches.push(newLeaf);
+        this.conectedLeaf = newLeaf;
         return newLeaf;
+    }
+    //refectoring -- adding getter and setters
+    get branches() {
+        return this._branches
+    }
+    set conectedLeaf(newLeaf) {
+        this._branches.push(newLeaf);
     }
 }
 
