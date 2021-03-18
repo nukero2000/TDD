@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import Tree from "./Entity/Tree";
+
 
 function App() {
   return (
