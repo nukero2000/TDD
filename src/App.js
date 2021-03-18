@@ -5,6 +5,8 @@ import Leaf from "./Entity/Leaf";
 
 
 function App() {
+  const tree= new Tree();
+
   return (
     <div className="App">
       <header className="App-header">
