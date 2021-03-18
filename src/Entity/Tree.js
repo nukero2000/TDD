@@ -9,7 +9,7 @@ class Tree {
         const leaf=new Leaf(rootLeafData);
         this.leafs=[leaf];
     }
-    getRoot = ()=>{
+    getRoot = () => {
         return this.leafs[0]
     }
 

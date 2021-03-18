@@ -4,8 +4,18 @@ class Leaf {
         if (!!leafData){
            const  {ID,ParentNode}=leafData;
             this.ID=ID;
-            this.ParentNode=ParentNode
+            this.ParentNode=ParentNode;
+            this.branches = [];
         }
+    }
+    growBranch = (ID) => {
+        const newLeafData={
+            ID,
+            ParentNode:this
+        };
+        const  newLeaf = new Leaf(newLeafData);
+        this.branches.push(newLeaf);
+        return newLeaf;
     }
 }
 

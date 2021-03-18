@@ -3,10 +3,14 @@ import './App.css';
 import Tree from "./Entity/Tree";
 import Leaf from "./Entity/Leaf";
 
+function debug(){
+
+  debugger;
+}
 
 function App() {
   const tree= new Tree();
-
+  //debug();
   return (
     <div className="App">
       <header className="App-header">
