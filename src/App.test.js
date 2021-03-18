@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 import Tree from "./Entity/Tree";
+import Leaf from "./Entity/Leaf";
 
 it('renders learn react link', () => {
   render(<App />);
@@ -13,7 +14,7 @@ it('Create tree',() => {
     expect(tree.leafs.length).toBe(0)
 })
 
-fit('Create one leaf ',()=>{
+it('Create one leaf ',()=>{
     const leaf = new Leaf();
     expect(leaf).toBeDefined();
 })
