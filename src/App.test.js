@@ -11,7 +11,7 @@ it('renders learn react link', () => {
 //TEST 2
 it('Create tree',() => {
     const tree= new Tree();
-    expect(tree.leafs.length).toBe(0)
+    expect(tree.leafs.length).toBe(1)
 })
 //TEST 3
 it('Create one leaf ',()=>{
@@ -26,5 +26,14 @@ it('Create leaf for root node on tree', ()=>{
     }
     const leaf = new Leaf(leafData);
     expect(leaf).toMatchObject(leafData)
+})
+//TEST 5
+it('Add root leaf to Tree', ()=>{
+    const tree= new Tree();
+    const leafData = {
+        ID:0,
+        ParentNode:null
+    }
+    expect(tree.getRoot()).toMatchObject(leafData)
 })
 
