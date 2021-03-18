@@ -64,3 +64,9 @@ it('Grow a custom binary tree on 3 level', () => {
     }
     expect(tree.countLeafs()).toBe(7);
 })
+//TEST 9
+fit('Grow random tree with n leafs', ()=>{
+    const tree = new Tree();
+    tree.grow(10,3);
+    expect(tree.countLeafs()).toBe(7);
+})
