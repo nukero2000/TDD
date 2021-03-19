@@ -70,4 +70,25 @@ it('Test 9: Grow random tree with n leafs', ()=>{
     tree.grow(10,3);
     expect(tree.countLeafs).toBe(10);
 })
+//TEST 10
+it('TEST 10: random number test',()=>{
+     const min = 1;
+     let max = 1
+     const tree = new Tree();
+     expect(tree.randomNumber(min,max)).toBe(1);
+     max=10;
+    expect(tree.randomNumber(min,max)).toBeGreaterThanOrEqual(min);
+    expect(tree.randomNumber(min,max)).toBeLessThanOrEqual(max);
 
+})
+//TEST 11:
+it('Test 11: Grow random tree test branches per leaf', ()=>{
+    const tree = new Tree();
+    const leafsNumber = tree.randomNumber(10,100);
+    const maxBranchesPerLeaf = tree.randomNumber(3,8)
+    tree.grow(leafsNumber,maxBranchesPerLeaf);
+    expect(tree.countLeafs).toBe(leafsNumber);
+    for(let leaf of tree.leafs){
+        expect(leaf.branches.length).toBeLessThanOrEqual(maxBranchesPerLeaf);
+    }
+})
