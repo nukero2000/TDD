@@ -92,3 +92,19 @@ it('Test 11: Grow random tree test branches per leaf', ()=>{
         expect(leaf.branches.length).toBeLessThanOrEqual(maxBranchesPerLeaf);
     }
 })
+
+//TEST 12:
+fit('TEST 12: Selecting 2 distinct nodes',()=>{
+    let tree = new Tree()
+    tree.grow(10,3);
+    let selectedLeaf=tree.selectLeaf(5);
+    expect(selectedLeaf).toBeInstanceOf(Leaf);
+    expect(tree.numberOfSelectedLeafs).toBe(1);
+    selectedLeaf=tree.selectLeaf(5);
+    expect(selectedLeaf).toBeInstanceOf(Leaf);
+    expect(tree.numberOfSelectedLeafs).toBe(1);
+    selectedLeaf=tree.selectLeaf(6);
+    expect(selectedLeaf).toBeInstanceOf(Leaf);
+    expect(tree.numberOfSelectedLeafs).toBe(2);
+
+})
