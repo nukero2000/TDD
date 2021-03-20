@@ -99,6 +99,7 @@ it('TEST 12: Selecting 2 distinct nodes',()=>{
     tree.grow(10,3);
     let selectedLeaf=tree.selectLeaf(5);
     expect(selectedLeaf).toBeInstanceOf(Leaf);
+    expect(selectedLeaf).toBe(tree.getLeaf(5));
     expect(tree.numberOfSelectedLeafs).toBe(1);
     selectedLeaf=tree.selectLeaf(5);
     expect(selectedLeaf).toBeInstanceOf(Leaf);
@@ -106,5 +107,20 @@ it('TEST 12: Selecting 2 distinct nodes',()=>{
     selectedLeaf=tree.selectLeaf(6);
     expect(selectedLeaf).toBeInstanceOf(Leaf);
     expect(tree.numberOfSelectedLeafs).toBe(2);
+
+})
+
+//TEST 13:
+it('TEST 13: unSelecting 1 leaf',()=>{
+    let tree = new Tree()
+    tree.grow(10,3);
+    let selectedLeaf=tree.selectLeaf(5);
+
+    tree.selectLeaf(6);
+    let unselectedLeaf=tree.unselectLeaf(tree.getLeaf(5));
+    expect(tree.getLeaf(5)).toBe(unselectedLeaf);
+    expect(unselectedLeaf).toBe(selectedLeaf);
+    expect(tree.numberOfSelectedLeafs).toBe(1);
+    expect(tree.isLeafSelected(tree.getLeaf(6))).toBe(true);
 
 })
