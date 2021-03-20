@@ -6,6 +6,7 @@ class Leaf {
             this.ID=ID;
             this.ParentNode=ParentNode;
             this._branches = [];
+            this._selected = false;
         }
     }
     growBranch = (ID) => {
@@ -23,6 +24,12 @@ class Leaf {
     }
     set conectedLeaf(newLeaf) {
         this._branches.push(newLeaf);
+    }
+    get isSelected() {
+        return this._selected;
+    }
+    set select(state){
+        this._selected=state;
     }
 }
 

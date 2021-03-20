@@ -94,7 +94,7 @@ it('Test 11: Grow random tree test branches per leaf', ()=>{
 })
 
 //TEST 12:
-fit('TEST 12: Selecting 2 distinct nodes',()=>{
+it('TEST 12: Selecting 2 distinct nodes',()=>{
     let tree = new Tree()
     tree.grow(10,3);
     let selectedLeaf=tree.selectLeaf(5);
