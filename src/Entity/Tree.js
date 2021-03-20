@@ -8,6 +8,7 @@ class Tree {
         }
         const leaf=new Leaf(rootLeafData);
         this.leafs=[leaf];
+        this._selectedLeafs= new Set()
     }
     getRoot = () => {
         return this.leafs[0]
@@ -46,6 +47,18 @@ class Tree {
        }
 
     }
+    getLeaf = (index) =>{
+        return this.leafs[index]
+    }
+    selectLeaf = (index) => {
+        const leaf= this.getLeaf(index);
+        leaf.select=1;
+        this._selectedLeafs.add(leaf)
+        return leaf;
+    }
 
+    get numberOfSelectedLeafs(){
+        return this._selectedLeafs.size;
+    }
 }
 export  default Tree
