@@ -56,9 +56,22 @@ class Tree {
         this._selectedLeafs.add(leaf)
         return leaf;
     }
+    unselectLeaf = (leaf) => {
+       /* this._selectedLeafs.forEach((selectedLeaf)=>{
+            if (selectedLeaf === leaf)
+                this._selectedLeafs.delete()
+        })*/
+        leaf.select=false;
+        this._selectedLeafs.delete(leaf);
+        return leaf;
+    }
+    isLeafSelected = (leaf) => {
+        return leaf.isSelected && this._selectedLeafs.has(leaf);
+    }
 
     get numberOfSelectedLeafs(){
         return this._selectedLeafs.size;
     }
+
 }
 export  default Tree
