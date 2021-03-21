@@ -134,3 +134,19 @@ it('Test 14: Path to root', () => {
     }
     expect(tree.pathToRoot(tree.getLeaf(4)).size).toBe(3);
 })
+
+fit('Test 15:Find LCA', ()=>{
+    const tree = new Tree();
+    tree.growBranches(tree.getRoot(),2)
+    let branch;
+    for(branch of tree.getRoot().branches){
+        tree.growBranches(branch,2)
+    }
+    tree.selectLeaf(3);
+    tree.selectLeaf(4)
+    expect(tree.LCA).toBe(tree.getLeaf(1));
+
+    tree.unselectLeaf(tree.getLeaf(4));
+    tree.selectLeaf(5);
+    expect(tree.LCA).toBe(tree.getRoot());
+})
