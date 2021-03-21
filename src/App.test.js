@@ -134,8 +134,8 @@ it('Test 14: Path to root', () => {
     }
     expect(tree.pathToRoot(tree.getLeaf(4)).size).toBe(3);
 })
-
-fit('Test 15:Find LCA', ()=>{
+//TEST 15
+it('Test 15:Find LCA', ()=>{
     const tree = new Tree();
     tree.growBranches(tree.getRoot(),2)
     let branch;

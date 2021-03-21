@@ -57,10 +57,6 @@ class Tree {
         return leaf;
     }
     unselectLeaf = (leaf) => {
-       /* this._selectedLeafs.forEach((selectedLeaf)=>{
-            if (selectedLeaf === leaf)
-                this._selectedLeafs.delete()
-        })*/
         leaf.select=false;
         this._selectedLeafs.delete(leaf);
         return leaf;
@@ -81,6 +77,16 @@ class Tree {
         }
         path.add(leaf);
         return path;
+    }
+    get LCA() {
+        if (this.numberOfSelectedLeafs<2) return false;
+        let intersection=false;
+        for(let leaf of this._selectedLeafs){
+            let path=this.pathToRoot(leaf);
+            if (!intersection) intersection=path;
+            else intersection= [...intersection].filter(x => path.has(x));
+        }
+        return intersection.values().next().value;
     }
 
 }
