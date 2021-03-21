@@ -124,3 +124,13 @@ it('TEST 13: unSelecting 1 leaf',()=>{
     expect(tree.isLeafSelected(tree.getLeaf(6))).toBe(true);
 
 })
+// TEST 14
+it('Test 14: Path to root', () => {
+    const tree = new Tree();
+    tree.growBranches(tree.getRoot(),2)
+    let branch;
+    for(branch of tree.getRoot().branches){
+        tree.growBranches(branch,2)
+    }
+    expect(tree.pathToRoot(tree.getLeaf(4)).size).toBe(3);
+})
