@@ -73,5 +73,15 @@ class Tree {
         return this._selectedLeafs.size;
     }
 
+    pathToRoot = (leaf) =>{
+        let path = new Set();
+        while (!!leaf.parent){
+            path.add(leaf);
+            leaf=leaf.parent
+        }
+        path.add(leaf);
+        return path;
+    }
+
 }
 export  default Tree

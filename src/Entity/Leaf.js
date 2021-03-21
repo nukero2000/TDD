@@ -31,6 +31,9 @@ class Leaf {
     set select(state){
         this._selected=state;
     }
+    get parent(){
+        return this.ParentNode;
+    }
 }
 
 export default Leaf;
