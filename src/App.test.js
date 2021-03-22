@@ -2,10 +2,11 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 import Tree from "./Entity/Tree";
 import Leaf from "./Entity/Leaf";
+import Diagram from "./Components/Diagram";
 //TEST 1
 it('Test 1: renders learn react link', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+  const linkElement = screen.getByText(/LCA/i);
   expect(linkElement).toBeInTheDocument();
 });
 //TEST 2
@@ -150,3 +151,12 @@ it('Test 15:Find LCA', ()=>{
     tree.selectLeaf(5);
     expect(tree.LCA).toBe(tree.getRoot());
 })
+//TEST 16
+it('Test 16: renders tree section', () => {
+    const tree = new Tree();
+    tree.grow(20,1)
+    const rendered = render(<Diagram tree={tree}/>);
+    // Get the widget div
+    const widgetContainer = rendered.container.querySelector("div");
+    expect(widgetContainer.className).toBe('tree-box');
+});
