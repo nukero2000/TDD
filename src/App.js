@@ -1,32 +1,27 @@
+import React, { Component } from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 import Tree from "./Entity/Tree";
-import Leaf from "./Entity/Leaf";
 
-function debug(){
+import Diagram from "./Components/Diagram";
+const diagramContainerClass='diagram-container'
 
-  debugger;
-}
 
 function App() {
   const tree= new Tree();
+  tree.grow(30,3);
   //debug();
   return (
+
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+         <span>LCA</span>
       </header>
+      <section className={diagramContainerClass}>
+        <Diagram tree={tree} />
+      </section>
     </div>
   );
 }
