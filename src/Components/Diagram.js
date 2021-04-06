@@ -12,15 +12,22 @@ class Diagram extends Component {
       "//localhost:3000/codebase/diagram.js",
       "//localhost:3000/codebase/diagram.css"
     ]);
+    let leafsNr = 0;
     this.state = {
       'diagram':{},
       'tree':!!props.tree?props.tree:new Tree()
     }
-    if (!!props.leafs && !!props.maxChildrenNodes)
-        this.state.tree.grow(props.leafs,props.maxChildrenNodes);
-    let randomLeaf=this.state.tree.randomNumber(1,props.leafs)
+
+    if (!!props.tree)
+        leafsNr=props.tree.countLeafs;
+    if (!!props.leafs && !!props.maxChildrenNodes){
+      this.state.tree.grow(props.leafs,props.maxChildrenNodes);
+      leafsNr = props.leafs;
+    }
+
+    let randomLeaf=this.state.tree.randomNumber(1,leafsNr-1)
     this.state.tree.selectLeaf(randomLeaf);
-    randomLeaf=this.state.tree.randomNumber(1,props.leafs)
+    randomLeaf=this.state.tree.randomNumber(1,leafsNr-1)
     this.state.tree.selectLeaf(randomLeaf);
   }
 
