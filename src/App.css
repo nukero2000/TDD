@@ -42,3 +42,11 @@
 .dhx_diagram.dhx_widget{
   background-color: white;
 }
+
+.selectedLeaf .dhx_item_shape {
+  background-color: #75c1e5 !important;
+}
+
+.lcaLeaf .dhx_item_shape {
+  fill: #e24312 !important;
+}

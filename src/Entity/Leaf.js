@@ -7,6 +7,7 @@ class Leaf {
             this.ParentNode=ParentNode;
             this._branches = [];
             this._selected = false;
+            this._isLCA = false;
         }
     }
     growBranch = (ID) => {
@@ -33,6 +34,14 @@ class Leaf {
     }
     get parent(){
         return this.ParentNode;
+    }
+
+    set isLCA(state) {
+        this._isLCA = state;
+    }
+
+    get isLCA() {
+        return this._isLCA;
     }
 }
 

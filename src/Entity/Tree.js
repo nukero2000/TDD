@@ -9,6 +9,7 @@ class Tree {
         const leaf=new Leaf(rootLeafData);
         this.leafs=[leaf];
         this._selectedLeafs= new Set()
+        this.leafLCA = false;
     }
     getRoot = () => {
         return this.leafs[0]
@@ -50,18 +51,22 @@ class Tree {
     getLeaf = (index) =>{
         return this.leafs[index]
     }
-    selectLeaf = (index) => {
-        const leaf= this.getLeaf(index);
+    selectLeaf = (leaf) => {
+        leaf = typeof leaf === 'number' ? this.getLeaf(leaf):leaf;
         leaf.select=1;
         this._selectedLeafs.add(leaf)
+        this.calculateLCA();
         return leaf;
     }
     unselectLeaf = (leaf) => {
+        leaf = typeof leaf === 'number' ? this.getLeaf(leaf):leaf;
         leaf.select=false;
         this._selectedLeafs.delete(leaf);
+        this.calculateLCA()
         return leaf;
     }
     isLeafSelected = (leaf) => {
+        leaf = typeof leaf === 'number' ? this.getLeaf(leaf):leaf;
         return leaf.isSelected && this._selectedLeafs.has(leaf);
     }
 
@@ -78,15 +83,26 @@ class Tree {
         path.add(leaf);
         return path;
     }
-    get LCA() {
-        if (this.numberOfSelectedLeafs<2) return false;
+    calculateLCA = () => {
+        if (this.LCA) this.LCA.isLCA=false;
+        if (this.numberOfSelectedLeafs<2) {
+            return this.LCA=false;
+        }
         let intersection=false;
         for(let leaf of this._selectedLeafs){
             let path=this.pathToRoot(leaf);
             if (!intersection) intersection=path;
             else intersection= [...intersection].filter(x => path.has(x));
         }
-        return intersection.values().next().value;
+        this.LCA=intersection.values().next().value;
+        this.LCA.isLCA=true;
+        return this.LCA
+    }
+    get LCA() {
+       return this.leafLCA;
+    }
+    set LCA(leaf) {
+        this.leafLCA = leaf;
     }
 
 }
